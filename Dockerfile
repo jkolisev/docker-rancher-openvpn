@@ -1,5 +1,4 @@
-FROM debian:jessie
-MAINTAINER Alexis Ducastel <alexis@ducastel.net>
+FROM debian:stretch
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     easy-rsa \

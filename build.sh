@@ -1,7 +1,7 @@
 #!/bin/bash
 
-DOCKER_IMAGE="mdns/rancher-openvpn"
-DOCKER_TAG="$1"
+DOCKER_IMAGE="$1"
+DOCKER_TAG="$2"
 
 if [ "$DOCKER_TAG" = "" ]
 then
