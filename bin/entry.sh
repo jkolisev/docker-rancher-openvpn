@@ -70,22 +70,22 @@ ca easy-rsa/keys/ca.crt
 cert easy-rsa/keys/server.crt
 key easy-rsa/keys/server.key
 dh easy-rsa/keys/dh2048.pem
-cipher AES-128-CBC
-auth SHA1
+cipher AES-256-CBC
+auth SHA256
 server $VPNPOOL_NETWORK $VPNPOOL_NETMASK
 push "dhcp-option DNS $PUSHDNS"
-push "dhcp-option SEARCH $PUSHSEARCH"
+push "dhcp-option DOMAIN $PUSHSEARCH"
 push "route $ROUTE_NETWORK $ROUTE_NETMASK"
 $RANCHER_METADATA_API
 keepalive 10 120
-comp-lzo
 persist-key
 persist-tun
 client-to-client
 username-as-common-name
-client-cert-not-required
+verify-client-cert none
+tls-version-min 1.2
 
-script-security 3 system
+script-security 3
 auth-user-pass-verify /usr/local/bin/openvpn-auth.sh via-env
 
 EOF

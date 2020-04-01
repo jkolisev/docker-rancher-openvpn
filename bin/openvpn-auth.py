@@ -127,7 +127,7 @@ if all (k in os.environ for k in ("username","password","AUTH_METHOD")):
     #   AUTH_LDAP_URL='ldap[s]://ldap.acme.tld[:port]'
     #   AUTH_LDAP_SEARCH='(uid=$username)'
     #   AUTH_LDAP_BASEDN='dc=accounts,dc=acme,dc=com'
-    #   AUTH_LDAP_GROUP_ALLOWED='cn=admins,dc=groups,dc=acme,dc=com'  // space-separated; no group auth when empty
+    #   AUTH_LDAP_GROUP_ALLOWED='cn=admins,dc=groups,dc=acme,dc=com'  // ;-separated; no group auth when empty
     #   AUTH_LDAP_GROUP_SEARCH='(member=$username)'
     #   AUTH_LDAP_GROUP_BASEDN='dc=groups,dc=acme,dc=com)'
     #   AUTH_LDAP_BINDDN='cn=admin,dc=acme,dc=com'
@@ -138,7 +138,7 @@ if all (k in os.environ for k in ("username","password","AUTH_METHOD")):
             address=os.environ.get('AUTH_LDAP_URL') 
             search=os.environ.get('AUTH_LDAP_SEARCH').replace('$username',username) 
             basedn=os.environ.get('AUTH_LDAP_BASEDN')
-            groupsallowed=os.environ.get('AUTH_LDAP_GROUP_ALLOWED').split()
+            groupsallowed=os.environ.get('AUTH_LDAP_GROUP_ALLOWED').split(';')
             groupsearch=os.environ.get('AUTH_LDAP_GROUP_SEARCH').replace('$username',username) 
             groupbasedn=os.environ.get('AUTH_LDAP_GROUP_BASEDN')
             binddn=os.environ.get('AUTH_LDAP_BINDDN')
